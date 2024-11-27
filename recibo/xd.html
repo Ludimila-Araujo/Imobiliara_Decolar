@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="icon" href="imagens/decolar.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links de Pagamento</title>
+    <style>
+        /* Definindo a fonte e a cor do fundo */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #2c3e50; /* Fundo mais escuro */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Estilo do container de conteúdo */
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff; /* Fundo claro para o formulário */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 500px;
+        }
+
+        /* Estilo do título */
+        h1 {
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        /* Estilo da lista de links */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin: 20px 0; /* Ajusta a distância entre os links para ficarem simétricos */
+        }
+
+        /* Estilo dos links */
+        a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #0c1c34;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            display: inline-block;
+            width: 100%; /* Faz os links ocuparem toda a largura disponível */
+            max-width: 350px; /* Limita a largura máxima dos links */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        /* Efeito de hover nos links */
+        a:hover {
+            background-color: #2980b9;
+            transform: translateY(-5px);
+        }
+
+        /* Efeito de foco nos links */
+        a:focus {
+            outline: none;
+            border: 2px solid #2980b9;
+        }
+
+        /* Estilo do botão de voltar */
+        .btn-voltar {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 20px;
+            background-color: #e74c3c;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-voltar:hover {
+            background-color: #c0392b;
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Opções de Pagamento</h1>
+        <ul>
+            <li><a href="form_recibo.html">Pagamento do imóvel</a></li>
+            <li><a href="form_recibo2.html">Pagamento referente a caução</a></li>
+            <li><a href="form_recibo3.html">Pagamento referente a </a></li>
+        </ul>
+        <a href="http://localhost/decolar/decolar/" class="btn-voltar">Voltar</a>
+    </div>
+</body>
+</html>
