@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="icon" href="imagens/decolar.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Pagamento</title>
+    <style>
+        /* Estilo básico de layout */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            text-align: justify;
+            color: #333;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        input[type="number"] {
+            text-align: right;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        input:invalid {
+            border-color: #e74c3c;
+        }
+
+        input:valid {
+            border-color: #2ecc71;
+        }
+
+        .btn-voltar {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 20px;
+            background-color: #e74c3c;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-voltar:hover {
+            background-color: #c0392b;
+            transform: translateY(-5px);
+        }
+
+        /* Estilos para impressão */
+        @page {
+            margin: 20mm; /* Define uma margem de 20mm para a página de impressão */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Esconde a barra de navegação ou outros conteúdos indesejados ao imprimir */
+        @media print {
+            .btn-voltar {
+                display: none; /* Esconde o botão de "voltar" na impressão */
+            }
+            h1 {
+                text-align: center; /* Centraliza o título ao imprimir */
+            }
+            body {
+                margin: 20mm; /* Garante que o conteúdo não saia do canto da página */
+            }
+            .form-container {
+                box-shadow: none; /* Remove a sombra do formulário na impressão */
+                padding: 15px; /* Diminui o padding do formulário para a impressão */
+            }
+            /* Esconde qualquer outro conteúdo não necessário na impressão */
+            header, footer, .btn-voltar {
+                display: none; /* Esconde header e footer, caso existam */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Formulário de Pagamento</h1>
+        <a href="http://localhost/decolar/decolar/recibo/xd.html" class="btn-voltar">Voltar</a>
+
+        <form action="recibo1.php" method="post">
+            <div>
+                <label for="mes">Mês:</label>
+                <select id="mes" name="mes">
+                    <option value="janeiro">Janeiro</option>
+                    <option value="fevereiro">Fevereiro</option>
+                    <option value="marco">Março</option>
+                    <option value="abril">Abril</option>
+                    <option value="maio">Maio</option>
+                    <option value="junho">Junho</option>
+                    <option value="julho">Julho</option>
+                    <option value="agosto">Agosto</option>
+                    <option value="setembro">Setembro</option>
+                    <option value="outubro">Outubro</option>
+                    <option value="novembro">Novembro</option>
+                    <option value="dezembro">Dezembro</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="nome">Nome do Pagante:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+
+            <div>
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf">
+            </div>
+
+            <div>
+                <label for="valor">Valor:</label>
+                <input type="number" id="valor" name="valor" required min="0" step="0.01" placeholder="Ex: 100.00">
+            </div>
+
+            <div>
+                <label for="localizacao">Localização do Imóvel:</label>
+                <input type="text" id="localizacao" name="localizacao" required>
+            </div>
+
+            <!-- Novo campo de data -->
+            <div>
+                <label for="data_pagamento">Data de Pagamento:</label>
+                <input type="date" id="data_pagamento" name="data_pagamento" required>
+            </div>
+
+            <div>
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
