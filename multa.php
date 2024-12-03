@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cálculos de Aluguel</title>
     <style>
-        /* Estilo global para o formulário */
+        
         form {
             background-color: #f9f9f9;
             padding: 20px;
@@ -106,7 +106,7 @@
         ?>
     </div>
 
-    <!-- Formulário 2 - Cálculo Completo de Aluguel -->
+    
     <div id="aluguel-form" class="form-container">
         <h2>Formulário de Cálculo de Aluguel</h2>
         <form method="POST" action="">
@@ -130,34 +130,34 @@
 
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // Pegando os valores do formulário
+            
             $aluguel = isset($_POST['aluguel']) ? (float)$_POST['aluguel'] : 0;
-            $contrato = isset($_POST['contrato']) ? (float)$_POST['contrato'] : 1; // Evitar divisão por zero
+            $contrato = isset($_POST['contrato']) ? (float)$_POST['contrato'] : 1; 
             $restante = isset($_POST['restante']) ? (float)$_POST['restante'] : 0;
             $iptu = isset($_POST['iptu']) ? (float)$_POST['iptu'] : 0;
             $checkbox = isset($_POST['checkbox']) ? true : false;
 
-            // Cálculo inicial
+            
             $resultado = ($aluguel * 3 / $contrato) * $restante;
 
-            // Se a checkbox estiver marcada, soma o valor do aluguel ao resultado
+            
             if ($checkbox) {
                 $resultado += $aluguel;
             }
 
-            // Se o valor do IPTU foi informado, soma ao resultado
+            
             if ($iptu > 0) {
                 $resultado += $iptu;
             }
 
-            // Exibe o resultado
+            
             echo "<div class='result'><h3>O resultado final é: R$ " . number_format($resultado, 2, ',', '.') . "</h3></div>";
         }
         ?>
     </div>
 
     <script>
-        // Função para exibir o formulário correto baseado na seleção
+        
         function mostrarFormulario() {
             var selecionado = document.getElementById("calculo").value;
             if (selecionado == "multa") {
@@ -169,7 +169,7 @@
             }
         }
 
-        // Exibe o formulário correto ao carregar a página
+        
         mostrarFormulario();
     </script>
 </body>

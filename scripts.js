@@ -1,4 +1,4 @@
-// Função de pesquisa
+
 document.getElementById('searchInput').addEventListener('keyup', function () {
     let input = document.getElementById('searchInput').value.toLowerCase();
     let ul = document.getElementById('fileList');
@@ -16,9 +16,9 @@ document.getElementById('searchInput').addEventListener('keyup', function () {
     }
 });
 
-// Função para exibir o PDF no iframe
+
 function showPDF(pdfPath) {
     let pdfViewer = document.getElementById('pdfViewer');
     pdfViewer.src = pdfPath;
-    pdfViewer.style.display = 'block'; // Exibe o iframe
+    pdfViewer.style.display = 'block'; 
 }

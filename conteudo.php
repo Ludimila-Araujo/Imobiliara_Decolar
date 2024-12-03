@@ -1,24 +1,24 @@
 <?php
-// Conexão com o banco de dados (substitua os valores de acordo com seu banco)
+
 $host = '127.0.0.1';
 $dbname = 'lembrete';
 $username = 'Decolar';
 $password = '@Jr123321';
 $conn = new mysqli($host, $username, $password, $dbname);
 
-// Verifique a conexão
+
 if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-// Processa o envio do formulário
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['principiador'])) {
     $principiador = $_POST['principiador'];
     $data = $_POST['data'];
     $data_final = $_POST['data_final'];
     $assunto = $_POST['assunto'];
 
-    // Prepara e executa a inserção dos dados no banco
+    
     $stmt = $conn->prepare("INSERT INTO exemplo_tabela (principiador, data, data_final, assunto) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $principiador, $data, $data_final, $assunto);
 
@@ -30,11 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['principiador'])) {
     $stmt->close();
 }
 
-// Exclui um registro
+
 if (isset($_GET['delete'])) {
     $id_to_delete = $_GET['delete'];
 
-    // Deleta o registro com o ID fornecido
+    
     $delete_sql = "DELETE FROM exemplo_tabela WHERE id = ?";
     $stmt = $conn->prepare($delete_sql);
     $stmt->bind_param("i", $id_to_delete);
@@ -47,7 +47,7 @@ if (isset($_GET['delete'])) {
     $stmt->close();
 }
 
-// Recupera e exibe os dados após a inserção
+
 $sql = "SELECT * FROM exemplo_tabela ORDER BY data DESC";
 $result = $conn->query($sql);
 ?>
@@ -59,7 +59,7 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Registro</title>
     <style>
-        /* Estilo para o botão que abre o formulário */
+        
 .open-form-btn {
     background-color: #0c1c34;
     color: white;
@@ -68,12 +68,12 @@ $result = $conn->query($sql);
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
-    display: block;  /* Faz o botão se comportar como um bloco */
-    margin: 20px auto; /* Centraliza o botão horizontalmente */
+    display: block;  
+    margin: 20px auto; 
 }
 
-        /* Estilo para o modal (formulário flutuante) */
-        /* Estilo para o modal (formulário flutuante) */
+        
+        
 .modal {
     display: none;
     position: fixed;
@@ -84,29 +84,29 @@ $result = $conn->query($sql);
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
     padding-top: 50px;
-    overflow: auto; /* Permite rolagem caso o conteúdo seja maior que a tela */
+    overflow: auto; 
 }
 
-/* Estilo do conteúdo do modal */
+
 .modal-content {
     background-color: #fff;
     margin: 50px auto;
     padding: 20px;
     border-radius: 8px;
     width: 40%;
-    max-height: 80%; /* Garante que o modal não ultrapasse 80% da altura da tela */
+    max-height: 80%; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow-y: auto; /* Permite rolagem no conteúdo do modal */
+    overflow-y: auto; 
     animation: scaleIn 0.3s ease-out forwards;
 }
 
-/* Animação de entrada */
+
 @keyframes scaleIn {
     0% { transform: scale(0.9); opacity: 0; }
     100% { transform: scale(1); opacity: 1; }
 }
 
-/* Estilo para o botão de fechar */
+
 .close {
     color: #aaa;
     float: right;
@@ -120,7 +120,7 @@ $result = $conn->query($sql);
     color: #000;
 }
 
-/* Estilo do título do formulário */
+
 .modal-content h2 {
     font-size: 20px;
     font-weight: bold;
@@ -129,7 +129,7 @@ $result = $conn->query($sql);
     text-align: center;
 }
 
-/* Estilo dos campos de input e textarea */
+
 input[type="text"],
 input[type="date"],
 textarea {
@@ -149,7 +149,7 @@ textarea:focus {
     outline: none;
 }
 
-/* Estilo para o botão de envio */
+
 button[type="submit"] {
     background-color: #0c1c34;
     color: white;
@@ -166,7 +166,7 @@ button[type="submit"]:hover {
     background-color: #0c1c34;
 }
 
-/* Estilo para as labels */
+
 label {
     font-size: 14px;
     font-weight: bold;
@@ -175,20 +175,20 @@ label {
     margin-bottom: 4px;
 }
 
-/* Estilo do texto dentro do formulário */
+
 textarea {
     height: 100px;
     resize: vertical;
 }
 
-/* Adicionando um pouco de espaçamento entre os campos */
+
 form {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-        /* Estilo para as post-its */
+        
         .post-it {
             width: 250px;
             height: 250px;
@@ -203,7 +203,7 @@ form {
             position: relative;
         }
 
-        /* Estilo para as informações do título do post-it */
+        
         .post-it-header {
             font-size: 14px;
             font-weight: bold;
@@ -217,7 +217,7 @@ form {
             color: #555;
         }
 
-        /* Estilo para o assunto do post-it */
+        
         .post-it-body {
             font-size: 14px;
             color: #333;
@@ -226,7 +226,7 @@ form {
             margin-top: 10px;
         }
 
-        /* Estilo para o link de exclusão */
+        
         .delete-link {
             position: absolute;
             bottom: 10px;
@@ -240,7 +240,7 @@ form {
             color: darkred;
         }
 
-        /* Estilo para a tabela de post-its */
+        
         .post-it-container {
             display: flex;
             flex-wrap: wrap;
@@ -256,10 +256,10 @@ form {
     <h3>ESSA PARTE INICIAL SERVE PARA GUARDAR OS LEMBRETES DO DIA</h3>
     <H6>TODOS AS INFORMAÇÕES QUE NECESSITAM SER LEMBRADAS SERÃO EXIBIDAS AQUI.<br>DESSA FORMA, É POSSIVEL MANTER UMA MAIOR ORGANIZAÇÃO TANTO PARA O CRIADOR DO DOCUMENTO QUANTO PARA OS VISUALIZADORES POSTERIORES.</H6>
     </div>
-    <!-- Botão para abrir o modal -->
+    
     <button class="open-form-btn" onclick="openForm()">Abrir Formulário</button>
 
-    <!-- Modal (formulário flutuante) -->
+    
     <div id="formModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeForm()">&times;</span>
@@ -284,7 +284,7 @@ form {
 
     <h2>Informações Registradas</h2>
 
-    <!-- Exibe os "post-its" com as informações registradas no banco de dados -->
+    
     <div class="post-it-container">
         <?php
         if ($result->num_rows > 0) {
@@ -306,22 +306,22 @@ form {
     </div>
 
     <?php
-    // Fechar conexão
+    
     $conn->close();
     ?>
 
     <script>
-        // Função para abrir o formulário (modal)
+        
         function openForm() {
             document.getElementById("formModal").style.display = "block";
         }
 
-        // Função para fechar o formulário (modal)
+        
         function closeForm() {
             document.getElementById("formModal").style.display = "none";
         }
 
-        // Fechar o modal se o usuário clicar fora dele
+        
         window.onclick = function(event) {
             if (event.target == document.getElementById("formModal")) {
                 closeForm();

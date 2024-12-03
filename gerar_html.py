@@ -1,9 +1,8 @@
 import os
 
-# Caminho da pasta com os arquivos PDF
 pasta = 'DOCUMENTOS ESCANEADOS'
 
-# Começa o conteúdo do HTML com as melhorias de design
+
 html_content = """
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -124,7 +123,7 @@ html_content = """
             margin-bottom: 10px;
         }
 
-        /* Responsividade */
+        
         @media screen and (max-width: 768px) {
             h1 {
                 font-size: 24px;
@@ -157,25 +156,25 @@ html_content = """
 </head>
 <body>
 
-    <!-- Botão Voltar no Canto Superior Esquerdo -->
+    
     <a href="javascript:history.back()" id="backButton">Voltar</a>
 
     <h1 style="color:white;">Lista de Documentos PDF</h1>
 
-    <!-- Botão Cadastrar Contrato Centralizado Abaixo do Título -->
+    
     <a href="beckup/upload.html" id="cadastrarContrato">Cadastrar Contrato</a>
 
-    <!-- Campo de Pesquisa -->
+    
     <input type="text" id="searchInput" onkeyup="searchFiles()" placeholder="Pesquise por um documento...">
 
-    <!-- Lista de Documentos -->
+    
     <ul id="fileList">
 """
 
-# Percorre todos os arquivos na pasta e gera a lista de documentos PDF
+
 for arquivo in os.listdir(pasta):
     if arquivo.endswith(".pdf"):
-        # Adiciona um link para abrir cada PDF em uma nova página dentro de uma caixa
+        
         html_content += f'''
         <li class="file-item">
             <div class="file-icon"></div>
@@ -185,11 +184,11 @@ for arquivo in os.listdir(pasta):
         </li>
         '''
 
-# Fecha o HTML
+
 html_content += """</ul>
 
     <script>
-        // Função de pesquisa
+        
         function searchFiles() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let ul = document.getElementById('fileList');
@@ -212,7 +211,7 @@ html_content += """</ul>
 </html>
 """
 
-# Salva o conteúdo gerado em um arquivo HTML
+
 with open('escaneados.html', 'w', encoding='utf-8') as f:
     f.write(html_content)
 
